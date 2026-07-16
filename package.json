@@ -1,0 +1,10 @@
+{
+    "name": "hello-kubernetes",
+    "version": "1.0.0",
+    "description": "Simple app kubernetes learning",
+    "main": "app.js",
+    "scripts":{
+        "start": "node app.js"
+    }
+
+}
