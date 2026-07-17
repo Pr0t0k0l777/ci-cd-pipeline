@@ -6,7 +6,13 @@ const server = http.createServer((req, res) => {
 });
 
 const port = 3000;
-server.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
+// Démarre le serveur SEULEMENT si on lance "node app.js" directement
+if (require.main === module ) {
+    server.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+    });
+}
+
+// Rend le serveur importable par le test
+module.exports = server;
 
