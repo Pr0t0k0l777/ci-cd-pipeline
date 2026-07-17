@@ -4,6 +4,7 @@ const http = require('http');
 const server = require('./app');
 
 test('Le serveur répond 200 avec "Hello world!"', (t, done) => {
+    t.after(() => server.close());
     server.listen(0, () => {
         const port = server.address().port
         http.get(`http://localhost:${port}`, (res) => {
@@ -12,7 +13,6 @@ test('Le serveur répond 200 avec "Hello world!"', (t, done) => {
             res.on('end', () => {
                 assert.strictEqual(res.statusCode, 200);
                 assert.strictEqual(body, 'Hello world!\n');
-                server.close();
                 done();
             });
         });
